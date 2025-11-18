@@ -18,8 +18,9 @@ body {
 }
 
 .container {
-    max-width: 1000px;
+    max-width: 3000px;
     margin: 0 auto;
+    padding: 0 40px;
 }
 
 h1 {
@@ -98,7 +99,8 @@ h1 {
 input {
     width: 100%;
     padding: 12px;
-    margin-bottom: 10px;
+    margin: 0 auto 10px auto; 
+    display: block; 
     border: 2px solid #ddd;
     border-radius: 5px;
     font-size: 16px;
