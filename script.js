@@ -1,10 +1,32 @@
 let posts = [];
 
 
+const modal = document.getElementById('modal');
+const floatingBtn = document.getElementById('floatingBtn');
+const closeBtn = document.getElementsByClassName('close')[0];
+
+
 window.onload = function() {
     const saved = localStorage.getItem('posts');
     if (saved) posts = JSON.parse(saved);
     showPosts();
+};
+
+
+floatingBtn.onclick = function() {
+    modal.style.display = 'block';
+};
+
+
+closeBtn.onclick = function() {
+    modal.style.display = 'none';
+};
+
+
+window.onclick = function(event) {
+    if (event.target == modal) {
+        modal.style.display = 'none';
+    }
 };
 
 
@@ -19,6 +41,7 @@ document.getElementById('postBtn').onclick = function() {
     
     localStorage.setItem('posts', JSON.stringify(posts));
     document.getElementById('input').value = '';
+    modal.style.display = 'none'; 
     showPosts();
 };
 

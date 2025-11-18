@@ -1,22 +1,24 @@
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Gratitude Wall</title>
-    <link rel="stylesheet" href="style.css">
-</head>
 <body>
     <div class="container">
-        <h1>GRATITUDE WALL 🌟</h1>
+        <h1>🌟 Gratitude Wall</h1>
         
-        <input type="text" id="input" placeholder="What are you Gratefull for today?" maxlength="150">
-        <button id="postBtn">Post</button>
-
-        <input type="text" id="filter" placeholder="Filter Posts...">
-
+        <input type="text" id="filter" placeholder="Filter posts...">
+        
         <div id="wall"></div>
     </div>
+    
 
-            <script src="script.js"></script>
+    <button id="floatingBtn">✍️ Post Gratitude</button>
+    
+
+    <div id="modal" class="modal">
+        <div class="modal-content">
+            <span class="close">&times;</span>
+            <h2>Share Your Gratitude</h2>
+            <input type="text" id="input" placeholder="What are you grateful for?" maxlength="150">
+            <button id="postBtn">Post</button>
+        </div>
+    </div>
+    
+    <script src="script.js"></script>
 </body>
-</html>
