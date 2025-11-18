@@ -40,11 +40,18 @@ function showPosts() {
         wall.innerHTML = '<p style="text-align:center; color:#999;">No posts yet!</p>';
         return;
     }
-    
-    wall.innerHTML = filtered.map(p => `
+ wall.innerHTML = filtered.map((p, index) => `
         <div class="post">
+            <button class="delete-btn" onclick="deletePost(${index})">×</button>
             <div class="post-text">${p.text}</div>
             <div class="post-time">${p.time}</div>
         </div>
     `).join('');
+}
+
+
+function deletePost(index) {
+    posts.splice(index, 1);
+    localStorage.setItem('posts', JSON.stringify(posts));
+    showPosts();
 }
