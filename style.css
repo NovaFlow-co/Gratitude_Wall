@@ -24,6 +24,8 @@ body {
 }
 
 h1 {
+    font-size: 50px;
+    font-style: italic;
     text-align: left;
     color: #333;
     margin-bottom: 30px;
@@ -32,7 +34,7 @@ h1 {
 #floatingBtn {
     position: fixed;
     bottom: 30px;
-    right: 30px;
+    left: 30px;  
     padding: 15px 25px;
     background: #4CAF50;
     color: white;
@@ -96,11 +98,20 @@ h1 {
     width: 100%;
     margin-bottom: 0;
 }
-input {
+#filter {
+    width: 20%;
+    padding: 12px;
+    margin: 0 auto 10px auto;
+    display: block;
+    border: 2px solid #ddd;
+    border-radius: 5px;
+    font-size: 16px;
+}
+
+#input {
     width: 100%;
     padding: 12px;
-    margin: 0 auto 10px auto; 
-    display: block; 
+    margin-bottom: 10px;
     border: 2px solid #ddd;
     border-radius: 5px;
     font-size: 16px;
@@ -123,16 +134,79 @@ button:hover {
 }
 
 #wall {
-    display: grid;
-    gap: 15px;
+    position: relative;
+    min-height: 500px;
+    width: 100%;
 }
 
 .post {
-    background: white;
+    background: linear-gradient(135deg, #ffeb3b 0%, #ffe595 100%);
     padding: 15px;
-    border-radius: 8px;
-    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
-    position: relative;
+    padding-top: 25px;
+    border-radius: 2px;
+    box-shadow: 
+        5px 5px 15px rgba(0,0,0,0.3),
+        inset 0 -40px 40px -40px rgba(0,0,0,0.1);
+    position: absolute;
+    width: 200px;
+    min-height: 150px;
+    cursor: grab;
+    word-wrap: break-word;
+    overflow-wrap: break-word;
+    font-family: 'Comic Sans MS', cursive, sans-serif;
+}
+
+.post::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 40%;
+    width: 20%;
+    height: 20px;
+    background: rgba(255,255,255,0.6);
+    border-bottom-left-radius: 5px;
+    border-bottom-right-radius: 5px;
+}
+
+.post:active {
+    cursor: grabbing;
+}
+
+.post-text {
+    font-size: 14px;
+    margin-bottom: 8px;
+    padding-right: 20px;
+    word-wrap: break-word;
+    overflow-wrap: break-word;
+    hyphens: auto;
+}
+
+.post-time {
+    font-size: 10px;
+    color: #666;
+    position: absolute;
+    bottom: 10px;
+    left: 15px;
+}
+
+.delete-btn {
+    position: absolute;
+    top: 5px;
+    right: 5px;
+    background: #e53935;
+    color: white;
+    border: none;
+    border-radius: 50%;
+    width: 20px;
+    height: 20px;
+    cursor: pointer;
+    font-size: 12px;
+    padding: 0;
+    line-height: 20px;
+}
+
+.delete-btn:hover {
+    background: #b71c1c;
 }
 
 .post-text {
