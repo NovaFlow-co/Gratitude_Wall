@@ -24,6 +24,10 @@ window.onclick = function(event) {
     }
 };
 
+document.getElementById('aboutBtn').onclick = function() {
+    window.location.href = 'about-us.html';
+};  
+
 document.getElementById('postBtn').onclick = function() {
     const text = document.getElementById('input').value;
     if (!text) return;
@@ -54,9 +58,9 @@ function showPosts() {
     );
     
     if (filtered.length === 0) {
-    wall.innerHTML = '<p style="position:fixed; top:60px; left:50%; transform:translateX(-50%); color:#666; font-size:18px; z-index:60;">No posts yet!</p>';
-    return;
-}
+        wall.innerHTML = '<p style="position:fixed; top:60px; left:50%; transform:translateX(-50%); color:#666; font-size:18px; z-index:60;">No posts yet!</p>';
+        return;
+    }
 
     wall.innerHTML = filtered.map((p, index) => `
         <div class="post" data-index="${index}" style="left: ${p.x}px; top: ${p.y}px;">
@@ -77,7 +81,6 @@ function deletePost(index) {
     showPosts();
 }
 
-
 function makeDraggable(element) {
     let offsetX, offsetY;
 
@@ -95,7 +98,7 @@ function makeDraggable(element) {
         document.onmouseup = function() {
             document.onmousemove = null;
             document.onmouseup = null;
-           
+            
             const index = element.getAttribute('data-index');
             posts[index].x = element.offsetLeft;
             posts[index].y = element.offsetTop;
