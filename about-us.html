@@ -4,69 +4,315 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>About Us - Gratitude Wall</title>
-    <link rel="stylesheet" href="style.css">
     <style>
-        .about-container {
-            max-width: 800px;
-            margin: 50px auto;
-            background: white;
-            padding: 40px;
-            border-radius: 10px;
-            box-shadow: 0 5px 20px rgba(0,0,0,0.2);
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
         }
-        
-        .about-container h1 {
-            position: static;
-            color: #4CAF50;
+
+        body {
+            font-family: 'Comic Sans MS', cursive, sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+            overflow-x: hidden;
+        }
+
+        .floating-hearts {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            overflow: hidden;
+            z-index: 1;
+        }
+
+        .heart {
+            position: absolute;
+            font-size: 30px;
+            animation: float 15s infinite;
+            opacity: 0.6;
+        }
+
+        @keyframes float {
+            0% {
+                transform: translateY(100vh) rotate(0deg);
+                opacity: 0;
+            }
+            50% {
+                opacity: 0.6;
+            }
+            100% {
+                transform: translateY(-100vh) rotate(360deg);
+                opacity: 0;
+            }
+        }
+
+        .hero {
             text-align: center;
-            margin-bottom: 30px;
+            padding: 60px 20px;
+            color: white;
+            position: relative;
+            z-index: 2;
         }
-        
-        .about-container p {
-            font-size: 18px;
+
+        .hero h1 {
+            font-size: 60px;
+            margin-bottom: 20px;
+            text-shadow: 3px 3px 10px rgba(0,0,0,0.3);
+            animation: bounce 2s infinite;
+        }
+
+        @keyframes bounce {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-20px); }
+        }
+
+        .hero p {
+            font-size: 24px;
+            text-shadow: 2px 2px 5px rgba(0,0,0,0.3);
+        }
+
+        .content {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 40px 20px;
+            position: relative;
+            z-index: 2;
+        }
+
+        .mission-box {
+            background: rgba(255, 255, 255, 0.95);
+            border-radius: 20px;
+            padding: 40px;
+            margin-bottom: 50px;
+            box-shadow: 0 10px 40px rgba(0,0,0,0.3);
+            transform: rotate(-1deg);
+        }
+
+        .mission-box h2 {
+            color: #667eea;
+            font-size: 36px;
+            margin-bottom: 20px;
+            text-align: center;
+        }
+
+        .mission-box p {
+            font-size: 20px;
             line-height: 1.8;
             color: #333;
-            margin-bottom: 20px;
+            text-align: center;
         }
-        
+
+        .features {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 30px;
+            margin: 50px 0;
+        }
+
+        .feature-card {
+            background: white;
+            border-radius: 15px;
+            padding: 30px;
+            text-align: center;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.2);
+            transition: transform 0.3s;
+        }
+
+        .feature-card:hover {
+            transform: translateY(-10px) rotate(2deg);
+        }
+
+        .feature-card .emoji {
+            font-size: 50px;
+            margin-bottom: 15px;
+        }
+
+        .feature-card h3 {
+            color: #667eea;
+            margin-bottom: 10px;
+        }
+
+        .creators-section {
+            background: rgba(255, 255, 255, 0.95);
+            border-radius: 20px;
+            padding: 50px;
+            margin: 50px 0;
+            box-shadow: 0 10px 40px rgba(0,0,0,0.3);
+        }
+
+        .creators-section h2 {
+            text-align: center;
+            color: #764ba2;
+            font-size: 42px;
+            margin-bottom: 50px;
+        }
+
+        .creators {
+            display: flex;
+            justify-content: space-around;
+            flex-wrap: wrap;
+            gap: 40px;
+        }
+
+        .creator {
+            text-align: center;
+            max-width: 300px;
+        }
+
+        .creator-photo {
+            width: 200px;
+            height: 200px;
+            border-radius: 50%;
+            border: 5px solid #667eea;
+            object-fit: cover;
+            margin-bottom: 20px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.3);
+            transition: transform 0.3s;
+        }
+
+        .creator-photo:hover {
+            transform: scale(1.1) rotate(5deg);
+        }
+
+        .creator h3 {
+            color: #667eea;
+            font-size: 24px;
+            margin-bottom: 10px;
+        }
+
+        .creator p {
+            color: #666;
+            font-size: 16px;
+            line-height: 1.6;
+        }
+
         .back-btn {
             display: block;
-            width: 200px;
-            margin: 30px auto 0;
-            padding: 12px 24px;
-            background: #4CAF50;
+            width: 250px;
+            margin: 50px auto;
+            padding: 15px 30px;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
             color: white;
             text-align: center;
             text-decoration: none;
-            border-radius: 25px;
-            font-size: 16px;
+            border-radius: 50px;
+            font-size: 20px;
+            font-weight: bold;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.3);
+            transition: transform 0.3s;
         }
-        
+
         .back-btn:hover {
-            background: #45a049;
+            transform: scale(1.1);
+        }
+
+        @media (max-width: 768px) {
+            .hero h1 {
+                font-size: 40px;
+            }
+            .creators {
+                flex-direction: column;
+                align-items: center;
+            }
         }
     </style>
 </head>
 <body>
-    <div class="about-container">
-        <h1>🌟 About Gratitude Wall</h1>
-        
-        <p>Welcome to <strong>Gratitude Wall</strong> - a space where positivity spreads and gratitude is shared with the world!</p>
-        
-        <p>Our mission is simple: to create a global community where people can anonymously share what they're grateful for. Whether it's your morning coffee, a loved one, a beautiful sunset, or a small victory - every moment of gratitude matters.</p>
-        
-        <h2>How It Works</h2>
-        <p>✨ <strong>Post Anonymously:</strong> Share your gratitude without any login required</p>
-        <p>🎯 <strong>Filter & Explore:</strong> Search for posts by keywords like "coffee," "family," or "sunshine"</p>
-        <p>📌 <strong>Drag & Arrange:</strong> Move sticky notes around the board to create your own layout</p>
-        <p>❤️ <strong>Spread Positivity:</strong> Read what others are grateful for and feel inspired</p>
-        
-        <h2>Why Gratitude?</h2>
-        <p>Research shows that practicing gratitude improves mental health, increases happiness, and strengthens relationships. By sharing what we're thankful for, we not only remind ourselves of life's blessings but also inspire others to notice theirs.</p>
-        
-        <p><em>"Gratitude turns what we have into enough." - Anonymous</em></p>
-        
-        <a href="index.html" class="back-btn">← Back to Wall</a>
+    <!-- Floating Hearts Animation -->
+    <div class="floating-hearts" id="hearts"></div>
+
+    <!-- Hero Section -->
+    <div class="hero">
+        <h1>🌟 About Gratitude Wall 🌟</h1>
+        <p>Spreading positivity, one post at a time!</p>
     </div>
+
+    <!-- Main Content -->
+    <div class="content">
+        <!-- Mission Box -->
+        <div class="mission-box">
+            <h2>Our Mission ❤️</h2>
+            <p>To create a global community where people can share gratitude anonymously and inspire each other to appreciate life's beautiful moments - big and small!</p>
+        </div>
+
+        <!-- Features -->
+        <div class="features">
+            <div class="feature-card">
+                <div class="emoji">✨</div>
+                <h3>Anonymous Sharing</h3>
+                <p>Post your gratitude without any login. Your privacy matters!</p>
+            </div>
+            <div class="feature-card">
+                <div class="emoji">🎯</div>
+                <h3>Filter & Explore</h3>
+                <p>Search for posts about coffee, pets, sunshine, or anything you love!</p>
+            </div>
+            <div class="feature-card">
+                <div class="emoji">📌</div>
+                <h3>Drag & Drop</h3>
+                <p>Move sticky notes around and create your perfect wall!</p>
+            </div>
+            <div class="feature-card">
+                <div class="emoji">💖</div>
+                <h3>Spread Joy</h3>
+                <p>Read what others are grateful for and feel the positive vibes!</p>
+            </div>
+        </div>
+
+        <!-- Creators Section -->
+        <div class="creators-section">
+            <h2>Meet the Creators 👥</h2>
+            <div class="creators">
+                <div class="creator">
+                    <img src="creator1.jpg" alt="Creator 1" class="creator-photo">
+                    <h3>Rickielou Agustin O. Palapar</h3>
+                    <p>Lead Developer & Gratitude Enthusiast. Loves coffee, coding, and spreading positivity!</p>
+                </div>
+                <div class="creator">
+                    <img src="creator2.jpg" alt="Creator 2" class="creator-photo">
+                    <h3>Chloe Onahon</h3>
+                    <p>UX Designer & Creative Mind. Passionate about making the world a better place through design!</p>
+                </div>
+                <div class="creator">
+                    <img src="creator3.jpg" alt="Creator 3" class="creator-photo">
+                    <h3>Fancis C. Montefalcon</h3>
+                    <p>Community Manager & Happiness Advocate. Believes in the power of gratitude to transform lives!</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- Back Button -->
+        <a href="index.html" class="back-btn">← Back to Gratitude Wall</a>
+    </div>
+
+    <script>
+        // Create floating hearts animation
+        const heartsContainer = document.getElementById('hearts');
+        const heartEmojis = ['❤️', '💛', '💚', '💙', '💜', '🧡', '💖'];
+        
+        function createHeart() {
+            const heart = document.createElement('div');
+            heart.className = 'heart';
+            heart.textContent = heartEmojis[Math.floor(Math.random() * heartEmojis.length)];
+            heart.style.left = Math.random() * 100 + '%';
+            heart.style.animationDuration = (Math.random() * 10 + 10) + 's';
+            heart.style.animationDelay = Math.random() * 5 + 's';
+            heartsContainer.appendChild(heart);
+            
+            setTimeout(() => heart.remove(), 20000);
+        }
+        
+        // Create hearts periodically
+        setInterval(createHeart, 1000);
+        
+        // Create initial hearts
+        for (let i = 0; i < 10; i++) {
+            setTimeout(createHeart, i * 300);
+        }
+    </script>
 </body>
 </html>
