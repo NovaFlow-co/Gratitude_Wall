@@ -30,15 +30,16 @@ body {
     box-shadow: -10px 0 20px rgba(0,0,0,0.3), 10px 0 20px rgba(0,0,0,0.3);
     border: 15px solid #D2B48C;
 }
-
 h1 {
-    font-size: 50px;
-    font-style: italic;
-    text-align: left;
+    position: absolute;
+    top: 10px;
+    left: 10px;
     color: #333;
-    margin-bottom: 30px;
+    margin: 0;
+    font-size: 24px;
+    z-index: 50;
+    font-size: 45px;
 }
-
 .heart-icon {
     width: 50px;
     height: 50px;
@@ -114,15 +115,18 @@ h1 {
     margin-bottom: 0;
 }
 #filter {
+    position: absolute;
+    top: 10px;
+    left: 50%;
+    transform: translateX(-50%);
     width: 20%;
     padding: 12px;
-    margin: 0 auto 10px auto;
-    display: block;
+    margin: 0;
     border: 2px solid #ddd;
     border-radius: 5px;
     font-size: 16px;
+    z-index: 50;
 }
-
 #input {
     width: 100%;
     padding: 12px;

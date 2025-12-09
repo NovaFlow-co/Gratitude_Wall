@@ -54,9 +54,9 @@ function showPosts() {
     );
     
     if (filtered.length === 0) {
-        wall.innerHTML = '<p style="text-align:center; color:#999;">No posts yet!</p>';
-        return;
-    }
+    wall.innerHTML = '<p style="position:fixed; top:60px; left:50%; transform:translateX(-50%); color:#666; font-size:18px; z-index:60;">No posts yet!</p>';
+    return;
+}
 
     wall.innerHTML = filtered.map((p, index) => `
         <div class="post" data-index="${index}" style="left: ${p.x}px; top: ${p.y}px;">
